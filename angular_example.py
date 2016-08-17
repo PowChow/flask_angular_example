@@ -2,11 +2,12 @@ import os
 from sklearn import datasets
 from sklearn.ensemble import RandomForestClassifier
 from flask import Flask, make_response, jsonify, request
+import sys
 
 DIR = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__)
 
-
+@app.route('/',methods=['GET', 'POST'])
 def get_model():
     iris = datasets.load_iris()
     model = RandomForestClassifier(n_estimators=1000).fit(iris.data, iris.target)
