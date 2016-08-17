@@ -35,6 +35,15 @@ def predict():
     val = {"data": [{"label": label, "prob": prob} for label, prob in zip(LABELS, probs)]}
     return jsonify(val)
 
+#Handle Bad Requests
+@app.errorhandler(404)
+def page_not_found(e):
+	return render_template('404.html'), 404
+
+app.secret_key = 'super_secret_key'
+
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 
 if __name__ == '__main__':
     app.run()
