@@ -1,1 +1,1 @@
-web: python angular_example.py
+web: gunicorn angular_example:app --log-file -
