@@ -1,1 +1,1 @@
-web: gunicorn angular_example:app
+web: python angular_example.py
